@@ -17,6 +17,15 @@ namespace TrainDisplay.TranslationFramework
         protected bool _languagesLoaded = false;
         protected bool _loadLanguageAutomatically = true;
         private string fallbackLanguage = "en";
+        public Language CurrentLanguage {
+            get {
+                if (_currentLanguage == null)
+                {
+                    LoadLanguages();
+                }
+                return _currentLanguage;
+            }
+        }
 
         public Translation(bool loadLanguageAutomatically = true)
         {
@@ -183,16 +192,15 @@ namespace TrainDisplay.TranslationFramework
                 {
                     translatedText = _currentLanguage._conversionDictionary[translationId];
                 }
-                /*
                 else
                 {
                     UnityEngine.Debug.LogWarning("Returned translation for language \"" + _currentLanguage._uniqueName + "\" doesn't contain a suitable translation for \"" + translationId + "\"");
                 }
-                */
             }
             else
             {
-                //UnityEngine.Debug.LogWarning("Can't get a translation for \"" + translationId + "\" as there is not a language defined");
+                UnityEngine.Debug.LogWarning("Can't get a translation for \"" + translationId + "\" as there is not a language defined");
+                UnityEngine.Debug.LogWarning(Util.AssemblyPath);
             }
 
             return translatedText;
