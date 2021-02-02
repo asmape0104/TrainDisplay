@@ -42,7 +42,7 @@ namespace TrainDisplay.UI
 
         private readonly Rect bodyLineRect = new Rect((int)(baseX + 100 * ratio), (int)(baseY + 5 * ratio), (int)(ratio * 40), (int)((screenHeight/3) - 10 * ratio));
         private readonly Rect bodyForTextRect = new Rect(baseX, (int)(baseY + 46 * ratio), (int)(ratio * 100), (int)(24 * ratio));
-        private readonly Rect bodyForSuffixTextRect = new Rect(baseX, (int)(baseY + (46 + 24) * ratio), (int)(ratio * 100), (int)(18 * ratio));
+        private readonly Rect bodyForSuffixTextRect = new Rect(baseX + (int)(ratio * 8), (int)(baseY + (46 + 24) * ratio), (int)(ratio * 84), (int)(18 * ratio));
         private readonly Rect bodyNextTextRect = new Rect((int)(baseX + 140 * ratio), (int)(baseY + 26 * ratio), (int)(ratio * (512-140)), (int)(70 * ratio));
         private readonly Rect bodyNextHeadTextRect = new Rect((int)(baseX + (140 + 10) * ratio), baseY, (int)(ratio * (512 - 140 - 20)), (int)(26 * ratio));
 
@@ -232,8 +232,8 @@ namespace TrainDisplay.UI
                 shownForText = routeStations[routeStations.Length - 1];
             }
             GUI.Label(bodyForTextRect, shownForText, forStyle);
-            GUI.Label(bodyForSuffixTextRect, circular ? "方面 " : "ゆき ", forSuffixStyle);
-            GUI.Label(bodyNextHeadTextRect, stopping ? "ただいま" : "次は", nextHeadStyle);
+            GUI.Label(bodyForSuffixTextRect, circular ? TrainDisplayMod.translation.GetTranslation("A_TD_FOR_CIRCULAR") : TrainDisplayMod.translation.GetTranslation("A_TD_FOR"), forSuffixStyle);
+            GUI.Label(bodyNextHeadTextRect, stopping ? TrainDisplayMod.translation.GetTranslation("A_TD_NOW_STOPPING_AT") : TrainDisplayMod.translation.GetTranslation("A_TD_NEXT"), nextHeadStyle);
             GUI.Label(bodyNextTextRect, stopping ? prevText : next, nextStyle);
 
             // ボディ
