@@ -330,6 +330,7 @@ namespace TrainDisplay.UI
             {
                 shownForText = routeStations[routeStations.Length - 1];
             }
+
             if (ForTextPositionIsOnTop(circular))
             {
                 GUI.Label(bodyForTextEngRect, shownForText, forStyle);
@@ -339,6 +340,7 @@ namespace TrainDisplay.UI
                 GUI.Label(bodyForTextRect, shownForText, forStyle);
                 GUI.Label(bodyForSuffixTextRect, circular ? TrainDisplayMod.translation.GetTranslation("A_TD_FOR_CIRCULAR", true) : TrainDisplayMod.translation.GetTranslation("A_TD_FOR", true), forSuffixStyle);
             }
+            
             GUI.Label(bodyNextHeadTextRect, stopping ? TrainDisplayMod.translation.GetTranslation("A_TD_NOW_STOPPING_AT", true) : TrainDisplayMod.translation.GetTranslation("A_TD_NEXT", true), nextHeadStyle);
             GUI.Label(bodyNextTextRect, stopping ? prevText : next, nextStyle);
 
